@@ -15,24 +15,6 @@ ActiveRecord::Schema.define(version: 2020_01_28_033004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "create_invoices", force: :cascade do |t|
-    t.bigint "merchant_id"
-    t.bigint "item_id"
-    t.string "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["item_id"], name: "index_create_invoices_on_item_id"
-    t.index ["merchant_id"], name: "index_create_invoices_on_merchant_id"
-  end
-
-  create_table "create_transactions", force: :cascade do |t|
-    t.integer "credit_card_number"
-    t.integer "credit_card_expiration_date"
-    t.boolean "result"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -78,17 +60,15 @@ ActiveRecord::Schema.define(version: 2020_01_28_033004) do
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "credit_card_number"
+    t.string "credit_card_number"
     t.string "credit_card_expiration_date"
-    t.boolean "result"
+    t.string "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "invoice_id"
     t.index ["invoice_id"], name: "index_transactions_on_invoice_id"
   end
 
-  add_foreign_key "create_invoices", "items"
-  add_foreign_key "create_invoices", "merchants"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "items"
   add_foreign_key "invoices", "customers"
