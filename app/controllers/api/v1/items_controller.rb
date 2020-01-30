@@ -1,9 +1,13 @@
 class Api::V1::ItemsController < ApplicationController
   def show
     if params[:id] == "find"
-      item = Item.find_by(request.query_parameters)
+      if request.query_parameters.keys == ["created_at"] || request.query_parameters.keys == ["updated_at"]
+        item = Item.where(request.query_parameters).order(:id).first
+      else
+        item = Item.find_by(request.query_parameters)
+      end
     elsif params[:id] == "find_all"
-      item = Item.where(request.query_parameters)
+      item = Item.where(request.query_parameters).order(:id)
     else
       item = Item.find(params[:id])
     end
