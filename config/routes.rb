@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :items, only: [:index, :show]
+      resources :invoices, only: [:index, :show]
+      resources :customers, only: [:index, :show]
       resources :merchants, only: [:show, :index] do
         resources :items, only: [:show, :index]
         resources :invoices, only: [:show, :index]
