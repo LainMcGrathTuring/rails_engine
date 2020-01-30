@@ -1,3 +1,7 @@
+def convert_price(unit_price)
+  unit_price.to_f / 100
+end
+
 namespace :item_data do
   desc "TODO"
   task items: :environment do
@@ -10,7 +14,7 @@ namespace :item_data do
       i.id = row["id"]
       i.name = row["name"]
       i.description = row["description"]
-      i.unit_price = row["unit_price"]
+      i.unit_price = convert_price(row["unit_price"])
       i.merchant_id = row["merchant_id"]
       i.created_at = row["created_at"]
       i.updated_at = row["updated_at"]
