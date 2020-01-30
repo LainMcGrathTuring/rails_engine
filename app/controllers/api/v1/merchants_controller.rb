@@ -8,6 +8,9 @@ class Api::V1::MerchantsController < ApplicationController
     elsif params[:item_id]
       item = Item.find_by(id: params[:item_id])
       merchant = Merchant.find_by(id: item.merchant_id)
+    elsif params[:invoice_id]
+      invoice = Invoice.find_by(id: params[:invoice_id])
+      merchant = Merchant.find_by(id: invoice.merchant_id)
     else
       merchant = Merchant.find(params[:id])
     end
