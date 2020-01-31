@@ -15,6 +15,9 @@ class Api::V1::InvoicesController < ApplicationController
   def show
     if params[:id] == "find"
       invoice = Invoice.find_by(request.query_parameters)
+    elsif params[:transaction_id]
+      transaction = Transaction.find_by(id: params[:transaction_id])
+      invoice = Invoice.find_by(id: transaction.invoice_id)
     elsif params[:id] == "find_all"
       invoice = Invoice.where(request.query_parameters).order(:id)
     else
