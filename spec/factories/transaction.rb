@@ -1,9 +1,11 @@
 FactoryBot.define do
   factory :transaction do
-    id { 1 }
+    sequence(:id) { |n| n }
     credit_card_number { "4654405418249632" }
-    credit_card_expiration_date { ""}
+    credit_card_expiration_date { "" }
     result { "success" }
-    invoice_id { 2 }
+    created_at { "2012-03-27 14:53:59" }
+    updated_at { "2012-03-27 14:53:59" }
+    invoice
   end
 end
