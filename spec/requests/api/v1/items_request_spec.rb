@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Item do
-  describe "can visiting an item pages" do
+  describe "visiting items pages" do
     before(:each) do
       @merchant = create(:merchant)
       @item = create(:item, merchant_id: @merchant.id )
