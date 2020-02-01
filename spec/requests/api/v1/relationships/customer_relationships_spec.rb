@@ -10,6 +10,7 @@ RSpec.describe "customer relationships" do
   it "can load a collection of invoices associated with a customer" do
 
     get "/api/v1/customers/#{@customer.id}/invoices"
+    expect(response).to be_successful
 
     customer_hash = JSON.parse(response.body)
     expect(customer_hash['data'].count).to eq(2)
@@ -21,6 +22,7 @@ RSpec.describe "customer relationships" do
     transaction_2 = create(:transaction, invoice_id: @invoice.id)
 
     get "/api/v1/customers/#{@customer.id}/transactions"
+    expect(response).to be_successful
 
     customer_hash = JSON.parse(response.body)
     expect(customer_hash['data'].count).to eq(3)
