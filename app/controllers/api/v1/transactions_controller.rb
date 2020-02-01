@@ -4,7 +4,7 @@ class Api::V1::TransactionsController < ApplicationController
     if params[:id] == "find"
       transaction = Transaction.find_by(request.query_parameters)
     elsif params[:id] == "find_all"
-      transaction = Transaction.where(request.query_parameters).order(:invoice_id)
+      transaction = Transaction.where(request.query_parameters).order(:id)
     else
       transaction = Transaction.find(params[:id])
     end
