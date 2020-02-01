@@ -4,10 +4,8 @@ RSpec.describe Item do
   describe "visiting items pages" do
     before(:each) do
       @merchant = create(:merchant)
-      @item = create(:item, merchant_id: @merchant.id )
-      @item_2 = create(:item, id: 2, merchant_id: @merchant.id )
-
-      @items = [@item, @item_2]
+      @item = create(:item, merchant_id: @merchant.id)
+      item_2 = create(:item, id: 2, merchant_id: @merchant.id)
     end
 
     it "can visit an item show page" do
@@ -85,7 +83,7 @@ RSpec.describe Item do
       expect(response).to be_successful
 
       items_hash = JSON.parse(response.body)
-      expect(items_hash["data"]['id'].to_i).to eq(@item.id)
+      expect(items_hash["data"].count).to eq(1)
     end
 
     it "can visit with name find_all query params" do
