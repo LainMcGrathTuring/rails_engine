@@ -5,6 +5,8 @@ RSpec.describe Customer do
     before(:each) do
       @customer = create(:customer)
       @customer_2 = create(:customer)
+      # @invoice = create(:invoice, id: @customer.id)
+      # @invoice_1 = create(:invoice, id: @customer.id)
     end
 
     it "can visit a customer show page" do
@@ -12,7 +14,7 @@ RSpec.describe Customer do
       expect(response).to be_successful
 
       customer_hash = JSON.parse(response.body)
-      expect(customer_hash['data']['id'].to_i).to eq(@customer.id)
+      expect(customer_hash['data']['attributes']['id']).to eq(@customer.id)
     end
 
     it "can visit a customer index page" do
@@ -28,7 +30,7 @@ RSpec.describe Customer do
       expect(response).to be_successful
 
       customer_hash = JSON.parse(response.body)
-      expect(customer_hash['data']['id'].to_i).to eq(@customer.id)
+      expect(customer_hash['data']['attributes']['id']).to eq(@customer.id)
     end
 
     it "can visit a customer with first_name query params" do
@@ -36,7 +38,7 @@ RSpec.describe Customer do
       expect(response).to be_successful
 
       customer_hash = JSON.parse(response.body)
-      expect(customer_hash['data']['id'].to_i).to eq(@customer.id)
+      expect(customer_hash['data']['attributes']['id']).to eq(@customer.id)
     end
 
     it "can visit a customer with last_name query params" do
@@ -44,7 +46,7 @@ RSpec.describe Customer do
       expect(response).to be_successful
 
       customer_hash = JSON.parse(response.body)
-      expect(customer_hash['data']['id'].to_i).to eq(@customer.id)
+      expect(customer_hash['data']['attributes']['id']).to eq(@customer.id)
     end
 
     it "can visit a customer with created_at query params" do
@@ -52,7 +54,7 @@ RSpec.describe Customer do
       expect(response).to be_successful
 
       customer_hash = JSON.parse(response.body)
-      expect(customer_hash['data']['id'].to_i).to eq(@customer.id)
+      expect(customer_hash['data']['attributes']['id']).to eq(@customer.id)
     end
 
     it "can visit a customer with updated_at query params" do
@@ -60,7 +62,7 @@ RSpec.describe Customer do
       expect(response).to be_successful
 
       customer_hash = JSON.parse(response.body)
-      expect(customer_hash['data']['id'].to_i).to eq(@customer.id)
+      expect(customer_hash['data']['attributes']['id']).to eq(@customer.id)
     end
 
     it "can visit a customer with find_all id query params" do
@@ -68,7 +70,7 @@ RSpec.describe Customer do
       expect(response).to be_successful
 
       customer_hash = JSON.parse(response.body)
-      expect(customer_hash['data']['id'].to_i).to eq(@customer.id)
+      expect(customer_hash['data']['attributes']['id']).to eq(@customer.id)
     end
 
     it "can visit a customer with find_all first_name query params" do
