@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :merchant do
-    id { 1 }
+    id { 2 }
     name { "Schroeder-Jerde" }
   end
 end
