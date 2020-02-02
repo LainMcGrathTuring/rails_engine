@@ -1,15 +1,6 @@
 class Api::V1::ItemsController < ApplicationController
   def show
-    if params[:id] == "find"
-      item = Item.query_find(request.query_parameters)
-    elsif params[:id] == "find_all"
-      item = Item.where(request.query_parameters).order(:id)
-    elsif params[:invoice_item_id]
-      invoice_item = InvoiceItem.find_by(id: params[:invoice_item_id])
-     item = Item.find_by(id: invoice_item.item_id)
-    else
-      item = Item.find(params[:id])
-    end
+    item = Item.find(params[:id])
     render json: ItemSerializer.new(item)
   end
 
