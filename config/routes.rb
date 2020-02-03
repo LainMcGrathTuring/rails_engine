@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       resources :customers, only: [:show, :index] do
         scope module: 'customers' do
           resources :invoices, only: :index
+          resources :favorite_merchant, only: :index
         end
       end
 
