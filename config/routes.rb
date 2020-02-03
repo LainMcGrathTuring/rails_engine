@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       namespace :items do
         resources :find, only: :index
         resources :find_all, only: :index
+        resources :most_items, only: :index
       end
 
       resources :items, only: [:index, :show] do
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
           resources :customer, only: :index
           resources :invoice_items, only: :index
           resources :transactions, only: :index
+          resources :items, only: :index
         end
         resources :items, only: [:index]
       end
@@ -55,13 +57,13 @@ Rails.application.routes.draw do
       resources :customers, only: [:show, :index] do
         scope module: 'customers' do
           resources :invoices, only: :index
+          resources :favorite_merchant, only: :index
+          resources :transactions, only: :index
         end
       end
 
       resources :customers, only: [:index, :show] do
         resources :invoices, only: :index
-        resources :transactions, only: :index
-        resources :favorite_customer, only: :index
       end
 
       namespace :transactions do
