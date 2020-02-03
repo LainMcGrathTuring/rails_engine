@@ -24,7 +24,7 @@ $ rails transaction_data:transactions
 rspec
 ```
 
-4. Endpoints
+### Endpoints
 ```
 * Merchants
 * Customers
