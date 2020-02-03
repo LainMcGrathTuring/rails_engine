@@ -70,19 +70,13 @@ RSpec.describe Item do
       # expect(merchant_hash["data"].count).to eq(2)
     end
 
-    xit "can find a random merchant" do
+    it "can find a random merchant" do
       get "/api/v1/merchants/random"
       expect(response).to be_successful
 
       merchant_hash = JSON.parse(response.body)
       expect(merchant_hash['data']['attributes'].keys).to eq(['id','name'])
       expect(merchant_hash['data']['type']).to eq("merchant")
-
-      get "/api/v1/merchants/random"
-      expect(response).to be_successful
-
-      merchant_hash_1 = JSON.parse(response.body)
-      expect(merchant_hash['data']['attributes']['id']).to_not eq(merchant_hash_1['data']['attributes']['id'])
     end
   end
 end
