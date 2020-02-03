@@ -25,13 +25,14 @@ rspec
 ```
 
 4. Endpoints
-
+```
 * Merchants
 * Customers
 * Items
 * Invoices
 * Invoice Items
 * Transactions
+```
 
 ### Relationship Endpoints
 
