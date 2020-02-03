@@ -6,5 +6,7 @@ class Invoice < ApplicationRecord
   has_many :transactions
 
   scope :merchant, -> (id) { where("merchant_id = ?", id) }
-  
+  scope :customer, -> (id) { where("customer_id = ?", id) }
+
+
 end
