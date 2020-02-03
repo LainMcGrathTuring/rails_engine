@@ -75,12 +75,15 @@ Rails.application.routes.draw do
         resources :find, only: :index
         resources :find_all, only: :index
         resources :random, only: :index
+        resources :most_items, only: :index
       end
 
       resources :merchants, only: [:show, :index] do
         scope module: 'merchants' do
           resources :items, only: [:show, :index]
           resources :invoices, only: [:show, :index]
+          resources :revenue, only: :index
+          resources :favorite_customer, only: :index
         end
       end
     end
