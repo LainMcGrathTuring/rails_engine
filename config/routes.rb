@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
       namespace :invoices do
         resources :find, only: :index
+        resources :find_all, only: :index
         resources :transaction, only: :index
       end
 
@@ -55,13 +56,17 @@ Rails.application.routes.draw do
         scope module: 'customers' do
           resources :invoices, only: :index
         end
-
       end
 
       resources :customers, only: [:index, :show] do
         resources :invoices, only: :index
-        resources :transactions, only: [:index]
-        get "/favorite_merchant", to: "merchants#favorite"
+        resources :transactions, only: :index
+        resources :favorite_customer, only: :index
+      end
+
+      namespace :transactions do
+        resources :find, only: :index
+        resources :find_all, only: :index
       end
 
       resources :transactions, only: [:index, :show] do

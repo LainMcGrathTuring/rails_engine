@@ -9,8 +9,4 @@ class Api::V1::MerchantsController < ApplicationController
     merchants = Merchant.all
     render json: MerchantSerializer.new(merchants)
   end
-
-  def favorite
-    # count invoice rows by customer ID
-  end
 end
